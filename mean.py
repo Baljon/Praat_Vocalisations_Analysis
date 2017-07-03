@@ -2,7 +2,7 @@ import scipy
 
 __author__ = 'Anna'
 
-import main
+import start
 import statistics
 from collections import namedtuple
 from operator import truediv
@@ -12,20 +12,20 @@ import matplotlib.pyplot as plt
 
 
 
-d1 = main.load_file("voc/DEP/11042_1_voc.TextGrid")
-d2 = main.load_file("voc/DEP/11052_1_voc.TextGrid")
-d3 = main.load_file("voc/DEP/11064_1_voc.TextGrid")
-d4 = main.load_file("voc/DEP/11092_1_voc.TextGrid")
-d5 = main.load_file("voc/DEP/11093_1_voc.TextGrid")
-d6 = main.load_file("voc/DEP/11107_1_voc.TextGrid")
-d7 = main.load_file("voc/DEP/11122_1_voc.TextGrid")
-nd1 = main.load_file("voc/NON-DEP/11036_1_voc.TextGrid")
-nd2 = main.load_file("voc/NON-DEP/11037_1_voc.TextGrid")
-nd3 = main.load_file("voc/NON-DEP/11041_1_voc.TextGrid")
-nd4 = main.load_file("voc/NON-DEP/11043_1_voc.TextGrid")
-nd5 = main.load_file("voc/NON-DEP/11096_1_voc.TextGrid")
-nd6 = main.load_file("voc/NON-DEP/11108_1_voc.TextGrid")
-nd7 = main.load_file("voc/NON-DEP/11115_1_voc.TextGrid")
+d1 = start.load_file("voc/DEP/11042_1_voc.TextGrid")
+d2 = start.load_file("voc/DEP/11052_1_voc.TextGrid")
+d3 = start.load_file("voc/DEP/11064_1_voc.TextGrid")
+d4 = start.load_file("voc/DEP/11092_1_voc.TextGrid")
+d5 = start.load_file("voc/DEP/11093_1_voc.TextGrid")
+d6 = start.load_file("voc/DEP/11107_1_voc.TextGrid")
+d7 = start.load_file("voc/DEP/11122_1_voc.TextGrid")
+nd1 = start.load_file("voc/NON-DEP/11036_1_voc.TextGrid")
+nd2 = start.load_file("voc/NON-DEP/11037_1_voc.TextGrid")
+nd3 = start.load_file("voc/NON-DEP/11041_1_voc.TextGrid")
+nd4 = start.load_file("voc/NON-DEP/11043_1_voc.TextGrid")
+nd5 = start.load_file("voc/NON-DEP/11096_1_voc.TextGrid")
+nd6 = start.load_file("voc/NON-DEP/11108_1_voc.TextGrid")
+nd7 = start.load_file("voc/NON-DEP/11115_1_voc.TextGrid")
 
 DEP_len = [d1.maxTimestamp, d2.maxTimestamp, d3.maxTimestamp, d4.maxTimestamp, d5.maxTimestamp, d6.maxTimestamp, d7.maxTimestamp]
 NON_DEP_len = [nd1.maxTimestamp, nd2.maxTimestamp, nd3.maxTimestamp, nd4.maxTimestamp, nd5.maxTimestamp, nd6.maxTimestamp, nd7.maxTimestamp]
@@ -36,12 +36,12 @@ Entry = namedtuple('Entry', ['begin', 'end', 'tag'])
 
 def select_inf_speechlike(f):
     inf_entries = f.tierDict['inf'].entryList
-    DEP_inf = main.select_speechlike(inf_entries)
+    DEP_inf = start.select_speechlike(inf_entries)
     return DEP_inf
 
 def select_inf_nonspeechlike(f):
     inf_entries = f.tierDict['inf'].entryList
-    DEP_inf = main.select_nonspeechlike(inf_entries)
+    DEP_inf = start.select_nonspeechlike(inf_entries)
     return DEP_inf
 
 def select_ma_voc(f):
@@ -99,8 +99,8 @@ nd7_inf_ns = select_inf_nonspeechlike(nd7)
 
 
 def count_voc_time(v):
-    times = main.count_times(v)
-    total = main.count_total_time(times)
+    times = start.count_times(v)
+    total = start.count_total_time(times)
     return total
 
 DEP_s_times = [count_voc_time(d1_inf_s),count_voc_time(d2_inf_s),count_voc_time(d3_inf_s),count_voc_time(d4_inf_s),count_voc_time(d5_inf_s),count_voc_time(d6_inf_s), count_voc_time(d7_inf_s)]
