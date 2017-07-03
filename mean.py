@@ -1,9 +1,16 @@
+import scipy
+
 __author__ = 'Anna'
 
 import main
 import statistics
 from collections import namedtuple
 from operator import truediv
+from scipy import stats
+from sklearn import preprocessing
+import matplotlib.pyplot as plt
+
+
 
 d1 = main.load_file("voc/DEP/11042_1_voc.TextGrid")
 d2 = main.load_file("voc/DEP/11052_1_voc.TextGrid")
@@ -135,6 +142,11 @@ NONDEP_s_times
 NONDEP_ns_times
 NONDEP_interaction_lengths = [nd1.maxTimestamp, nd2.maxTimestamp, nd3.maxTimestamp, nd4.maxTimestamp, nd5.maxTimestamp, nd6.maxTimestamp, nd7.maxTimestamp]
 
+TOTAL_interactions_time = sum(DEP_interaction_lengths) + sum(NONDEP_interaction_lengths)
+TOTAL_interactions_time_minutes = TOTAL_interactions_time/60
+TOTAL_interactions_time_hours = TOTAL_interactions_time_minutes/60
+
+
 def count_percentage(voc, lengths):
     percentage = []
     percentage.extend(map(truediv, voc, lengths))
@@ -154,33 +166,77 @@ mean_percentage_nondep_ns = statistics.mean(NONDEP_ns_percentage)
 mean_percentage_nondep_whole = (mean_percentage_nondep_ns + mean_percentage_nondep_s)/2
 
 #no dobra to może teraz dla sprawdzenia mamy?
+DEP_mothervoc_percentage = count_percentage(DEP_mothervoc_times, DEP_interaction_lengths)
+NONDEP_mothervoc_percentage = count_percentage(NONDEP_mothervoc_times, NONDEP_interaction_lengths)
+mean_percentage_dep_mothervoc = statistics.mean(DEP_mothervoc_percentage)
+mean_percentage_nondep_mothervoc = statistics.mean(NONDEP_mothervoc_percentage)
 
-
-
+#i cisza..?
 
 
 
 
 #STANDARYZACJA
 # z = (x - mean)/ std
-MEAN = (DEP_mean + NON_DEP_mean)/2
-LEN = DEP_len + NON_DEP_len
-STD = statistics.stdev(LEN)
-def standaryzacja1(lst):
+def standaryzacja1(lst, mean, std):
     lst2=[]
     for i in lst:
-        z = (i - MEAN)/STD
+        z = (i - mean)/std
         lst2 = lst2 + [z]
     return lst2
 
-LEN_2 = []
-lEN_2 = LEN_2 + standaryzacja1(LEN)
-DEP_len_2 = standaryzacja1(DEP_len)
-NON_DEP_len_2 = standaryzacja1(NON_DEP_len)
-test1 = statistics.mean(lEN_2)
-test2 = statistics.stdev(lEN_2)
 
-#no dobra
-#to teraz porównanie dwóch średnich?
+NS = DEP_ns_times + NONDEP_ns_times
+NS_mean1 = statistics.mean(NS)
+NS_stdev1 = statistics.stdev(NS)
+S = DEP_s_times + NONDEP_s_times
+VOC = DEP_mothervoc_times + NONDEP_mothervoc_times
+
+NS_standaryzacja = standaryzacja1(NS, NS_mean1, NS_stdev1)
+
+# checkIfNormal_NS = scipy.stats.normaltest(NS)
+# checkIfNormal_S = scipy.stats.normaltest(S)
+# checkIfNormal_VOC = scipy.stats.normaltest(VOC)
+#var= scipy.stats.ttest_ind(DEP_ns_times,NONDEP_ns_times)
+#var2=scipy.stats.ttest_ind(DEP_ns_percentage,NONDEP_ns_percentage)
+#var3 = scipy.zscore(NS)
+
+#MUSIMY PRZESKALOWAĆ ZMIENNE
+# A/B = X/C
+# zatem X = (A * C)/B
+# A - CZAS WOKALIZACJI (S/NS/VOC)
+# B - CZAS INTERAKCJI
+# C - ŚREDNI CZAS INTERAKCJI
+# X - PRZESKALOWANA ZMIENNA
+
+DEP_mean
+NON_DEP_mean
+
+def przeskalowanie(listaCzasówWokalizacji, listaCzasówInterakcji, średniCzasInterakcji):
+    x = []
+    A = listaCzasówWokalizacji
+    B = listaCzasówInterakcji
+    C = średniCzasInterakcji
+    for czas in A:
+        var = czas * C
+        x.append(var)
+    y = []
+    y.extend(map(truediv, x, B))
+    return y
+
+DEP_ns_times_norm = przeskalowanie(DEP_ns_times, DEP_interaction_lengths, DEP_mean)
+DEP_s_times_norm = przeskalowanie(DEP_s_times, DEP_interaction_lengths, DEP_mean)
+DEP_mothervoc_times_norm = przeskalowanie(DEP_mothervoc_times, DEP_interaction_lengths, DEP_mean)
+
+NONDEP_ns_times_norm = przeskalowanie(NONDEP_ns_times, NONDEP_interaction_lengths, NON_DEP_mean)
+NONDEP_s_times_norm = przeskalowanie(NONDEP_s_times, NONDEP_interaction_lengths, NON_DEP_mean)
+NONDEP_mothervoc_times_norm = przeskalowanie(NONDEP_mothervoc_times, NONDEP_interaction_lengths, NON_DEP_mean)
+
+var= scipy.stats.ttest_ind(DEP_ns_times_norm,NONDEP_ns_times_norm)
+var2= scipy.stats.ttest_ind(DEP_s_times_norm,NONDEP_s_times_norm)
+var3= scipy.stats.ttest_ind(DEP_mothervoc_times_norm,NONDEP_mothervoc_times_norm)
+
+#nic nie wyszlo
+
 
 x=1
