@@ -237,6 +237,6 @@ var2= scipy.stats.ttest_ind(DEP_s_times_norm,NONDEP_s_times_norm)
 var3= scipy.stats.ttest_ind(DEP_mothervoc_times_norm,NONDEP_mothervoc_times_norm)
 
 #nic nie wyszlo
-
-
+#do tabelek
+#test dokładny fishera, chi kwadrat
 x=1

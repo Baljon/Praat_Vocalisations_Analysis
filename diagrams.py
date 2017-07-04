@@ -55,8 +55,8 @@ z =1
 # plt.show()
 import numpy as np
 
-plt.ylabel('proportion of child vocalisation')
-plt.xlabel('NONDEP')
+plt.ylabel('child speechlikeness contingency on previous response')
+plt.xlabel('assumed window [s]')
 # d1 = [1,2,3,4,5,6,7]
 # # x1 dep_ns_proporition
 # x1 = plt.plot([1,2,3,4,5,6,7],[0.1390970928494917, 0.4873271889401076, 0.04809843400447474, 0.2744261055749015, 0.3315763546592444, 0.7358022381163659, 0.49619257162535146], "ro")
@@ -74,3 +74,21 @@ plt.xlabel('NONDEP')
 # plt.setp(x4, color='skyblue')
 #
 # plt.show()
+
+from response import okna, contingency_okna_DEP, contingency_okna_NONDEP, prev_cont_dep, prev_cont_nondep
+
+# #nondep_s_prop
+# x5 = plt.plot(okna,contingency_okna_DEP,"ro")
+# plt.setp(x5, color='purple')
+# # #nondep_ns_prop
+# x6 = plt.plot(okna,contingency_okna_NONDEP,"ro")
+# plt.setp(x6, color='skyblue')
+# plt.show()
+
+
+x7 = plt.plot(okna,prev_cont_dep,"ro")
+plt.setp(x7, color='purple')
+# #nondep_ns_prop
+x8 = plt.plot(okna,prev_cont_nondep,"ro")
+plt.setp(x8, color='skyblue')
+plt.show()
