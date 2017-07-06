@@ -1,4 +1,4 @@
 praatio
-numpy >= 1.8
-scipy >= 0.14
-python-igraph >= 0.7
+numpy
+scipy
+python-igraph
