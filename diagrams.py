@@ -55,7 +55,7 @@ z =1
 # plt.show()
 import numpy as np
 
-plt.ylabel('child speechlikeness contingency on previous response')
+plt.ylabel('adult response contingency on child speechlikeness')
 plt.xlabel('assumed window [s]')
 # d1 = [1,2,3,4,5,6,7]
 # # x1 dep_ns_proporition
@@ -76,7 +76,7 @@ plt.xlabel('assumed window [s]')
 # plt.show()
 
 from response import okna, contingency_okna_DEP, contingency_okna_NONDEP, prev_cont_dep, prev_cont_nondep
-
+#
 # #nondep_s_prop
 # x5 = plt.plot(okna,contingency_okna_DEP,"ro")
 # plt.setp(x5, color='purple')
@@ -86,9 +86,9 @@ from response import okna, contingency_okna_DEP, contingency_okna_NONDEP, prev_c
 # plt.show()
 
 
-x7 = plt.plot(okna,prev_cont_dep,"ro")
-plt.setp(x7, color='purple')
-# #nondep_ns_prop
-x8 = plt.plot(okna,prev_cont_nondep,"ro")
-plt.setp(x8, color='skyblue')
-plt.show()
+# x7 = plt.plot(okna,prev_cont_dep,"ro")
+# plt.setp(x7, color='purple')
+# # #nondep_ns_prop
+# x8 = plt.plot(okna,prev_cont_nondep,"ro")
+# plt.setp(x8, color='skyblue')
+# plt.show()

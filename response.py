@@ -71,14 +71,18 @@ con1= scipy.stats.ttest_ind(contingencies1d,contingencies1nd)
 #dla innych czasów
 contingencies05d = liczContingency(DEP,0.5)
 contingencies05nd = liczContingency(NONDEP, 0.5)
+contingencies15d = liczContingency(DEP,1.5)
+contingencies15nd = liczContingency(NONDEP, 1.5)
 contingencies2d = liczContingency(DEP,2)
 contingencies2nd = liczContingency(NONDEP,2)
+contingencies25d = liczContingency(DEP,2.5)
+contingencies25nd = liczContingency(NONDEP, 2.5)
 contingencies3d = liczContingency(DEP,3)
 contingencies3nd = liczContingency(NONDEP,3)
 
-okna = [0.5,1,2,3]
-contingency_okna_DEP = [contingencies05d,contingencies1d,contingencies2d,contingencies3d]
-contingency_okna_NONDEP = [contingencies05nd, contingencies1nd, contingencies2nd, contingencies3nd]
+okna = [0.5,1,1.5,2,2.5,3]
+contingency_okna_DEP = [contingencies05d,contingencies1d,contingencies15d, contingencies2d,contingencies25d,contingencies3d]
+contingency_okna_NONDEP = [contingencies05nd, contingencies1nd, contingencies15nd, contingencies2nd, contingencies25nd, contingencies3nd]
 def liczPreviousContingencies(listaWczytanychInterakcji, okno):
 
     prevCont = []
@@ -98,13 +102,17 @@ print(con3)
 #dla innych czasów
 previous_contingencies05d = liczPreviousContingencies(DEP,0.5)
 previous_contingencies05nd = liczPreviousContingencies(NONDEP, 0.5)
+previous_contingencies15d = liczPreviousContingencies(DEP,1.5)
+previous_contingencies15nd = liczPreviousContingencies(NONDEP, 1.5)
 previous_contingencies2d = liczPreviousContingencies(DEP,2)
+previous_contingencies25d = liczPreviousContingencies(DEP, 2.5)
+previous_contingencies25nd = liczPreviousContingencies(NONDEP, 2.5)
 previous_contingencies2nd = liczPreviousContingencies(NONDEP,2)
 previous_contingencies3d = liczPreviousContingencies(DEP,3)
 previous_contingencies3nd = liczPreviousContingencies(NONDEP,3)
 
-prev_cont_dep = [previous_contingencies05d,previous_contigencies1d,previous_contingencies2d,previous_contingencies3d ]
-prev_cont_nondep = [previous_contingencies05nd,previous_contigencies1nd,previous_contingencies2nd,previous_contingencies3nd ]
+prev_cont_dep = [previous_contingencies05d,previous_contigencies1d,previous_contingencies15d, previous_contingencies2d,previous_contingencies25d, previous_contingencies3d ]
+prev_cont_nondep = [previous_contingencies05nd,previous_contigencies1nd,previous_contingencies15nd, previous_contingencies2nd,previous_contingencies25nd, previous_contingencies3nd ]
 
 
 
