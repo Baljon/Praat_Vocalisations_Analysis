@@ -103,6 +103,7 @@ def entryListPreparation(wokalizacje):
 		wynik.append(singleEntryListPreparation(singleVoc))
 	return wynik
 
+
 test = entryListPreparation(d1_dziecko)
 
 
