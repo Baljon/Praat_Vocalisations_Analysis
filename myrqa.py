@@ -140,7 +140,37 @@ def zapisz(binary_list, katalog, nazwa):
 		file.write(list_str)
 
 
-zapisz(d1_dziecko, "DEP", "d1_dziecko")
+zapisz(d1_dziecko, "DEP", "d1_dziecko.txt")
+zapisz(d2_dziecko, "DEP", "d2_dziecko.txt")
+zapisz(d3_dziecko, "DEP", "d3_dziecko.txt")
+zapisz(d4_dziecko, "DEP", "d4_dziecko.txt")
+zapisz(d5_dziecko, "DEP", "d5_dziecko.txt")
+zapisz(d6_dziecko, "DEP", "d6_dziecko.txt")
+zapisz(d7_dziecko, "DEP", "d7_dziecko.txt")
+
+zapisz(d1_mama, "DEP", "d1_mama.txt")
+zapisz(d2_mama, "DEP", "d2_mama.txt")
+zapisz(d3_mama, "DEP", "d3_mama.txt")
+zapisz(d4_mama, "DEP", "d4_mama.txt")
+zapisz(d5_mama, "DEP", "d5_mama.txt")
+zapisz(d6_mama, "DEP", "d6_mama.txt")
+zapisz(d7_mama, "DEP", "d7_mama.txt")
+
+zapisz(nd1_dziecko, "NONDEP", "nd1_dziecko.txt")
+zapisz(nd2_dziecko, "NONDEP", "nd2_dziecko.txt")
+zapisz(nd3_dziecko, "NONDEP", "nd3_dziecko.txt")
+zapisz(nd4_dziecko, "NONDEP", "nd4_dziecko.txt")
+zapisz(nd5_dziecko, "NONDEP", "nd5_dziecko.txt")
+zapisz(nd6_dziecko, "NONDEP", "nd6_dziecko.txt")
+zapisz(nd7_dziecko, "NONDEP", "nd7_dziecko.txt")
+
+zapisz(nd1_mama, "NONDEP", "nd1_mama")
+zapisz(nd2_mama, "NONDEP", "nd2_mama")
+zapisz(nd3_mama, "NONDEP", "nd3_mama")
+zapisz(nd4_mama, "NONDEP", "nd4_mama")
+zapisz(nd5_mama, "NONDEP", "nd5_mama")
+zapisz(nd6_mama, "NONDEP", "nd6_mama")
+zapisz(nd7_mama, "NONDEP", "nd7_mama")
 
 x = 1
 
