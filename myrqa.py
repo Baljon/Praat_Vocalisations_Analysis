@@ -11,11 +11,11 @@ def binary(interakcja, osoba, okno=0.25, prog_ciszy=0.5):
 	while current < end:
 		nearest_voc = znajdz_najblizsza_po_czasie(wokalizacje, current)
 		if nearest_voc is None:
-			binary_list.append(0)
+			binary_list.append("0")
 		elif nearest_voc.begin > current + okno:
-			binary_list.append(0)
+			binary_list.append("0")
 		else:
-			binary_list.append(1)
+			binary_list.append("1")
 		current = current + okno
 	return binary_list
 
@@ -30,8 +30,36 @@ def znajdz_najblizsza_po_czasie(wokalizacje, czas):
 	# return wokalizacje[index]
 
 d1_mama = binary(d1, "ma")
-d1_dziecko = binary(d1, "inf")
+d2_mama = binary(d2, "ma")
+d3_mama = binary(d3, "ma")
+d4_mama = binary(d4, "ma")
+d5_mama = binary(d5, "ma")
+d6_mama = binary(d6, "ma")
+d7_mama = binary(d7, "ma")
 
+d1_dziecko = binary(d1, "inf")
+d2_dziecko = binary(d2, "inf")
+d3_dziecko = binary(d3, "inf")
+d4_dziecko = binary(d4, "inf")
+d5_dziecko = binary(d5, "inf")
+d6_dziecko = binary(d6, "inf")
+d7_dziecko = binary(d7, "inf")
+
+nd1_mama = binary(nd1, "ma")
+nd2_mama = binary(nd2, "ma")
+nd3_mama = binary(nd3, "ma")
+nd4_mama = binary(nd4, "ma")
+nd5_mama = binary(nd5, "ma")
+nd6_mama = binary(nd6, "ma")
+nd7_mama = binary(nd7, "ma")
+
+nd1_dziecko = binary(nd1, "inf")
+nd2_dziecko = binary(nd2, "inf")
+nd3_dziecko = binary(nd3, "inf")
+nd4_dziecko = binary(nd4, "inf")
+nd5_dziecko = binary(nd5, "inf")
+nd6_dziecko = binary(nd6, "inf")
+nd7_dziecko = binary(nd7, "inf")
 # d1_dziecko = binary(d1.tierDict["inf"].entryList)
 # d2_mama = binary(d2.tierDict["ma"].entryList)
 # d2_dziecko = binary(d2.tierDict["inf"].entryList)
@@ -106,9 +134,13 @@ def entryListPreparation(wokalizacje):
 
 #st = entryListPreparation(d1_dziecko)
 
+def zapisz(binary_list, katalog, nazwa):
+	list_str = "".join(binary_list)
+	with open("voc_binary/" + katalog + '/' + nazwa, 'w') as file:
+		file.write(list_str)
 
-print(len(d1_dziecko))
-print(len(d1_mama))
+
+zapisz(d1_dziecko, "DEP", "d1_dziecko")
 
 x = 1
 
